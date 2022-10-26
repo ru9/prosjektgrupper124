@@ -37,7 +37,7 @@ def NyAvtale():
     
     while True:
         try:
-            duration = float(input("Hvor lenge varer møtet: "))
+            duration = float(input("Hvor lenge varer møtet (i minutter): "))
             break
 
         except ValueError:
