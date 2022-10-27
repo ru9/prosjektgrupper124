@@ -32,7 +32,7 @@ def ReadAvtale(avtaleliste):
 def PrinteUtAlle(avtaleliste):
     overskrift = input ('Skriv en overskrift for avtaleliste: ')
     print (overskrift)
-    if len(avtaleliste) !=0:
+    if avtaleliste:
         avtale_indeks = 0
         for i in avtaleliste:
             avtale_indeks +=1
