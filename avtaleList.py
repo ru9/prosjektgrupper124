@@ -49,14 +49,14 @@ class AvtaleList:
                 Avtale "{avtale.name}" byttet til "{nyttNavn}"
                 ''')
                 avtale.name = nyttNavn
-                print(avtale + '\n')
+                print(f'{avtale} ')
             elif choice == '2':
                 nyttSted = input('Gi nytt sted: \n')
                 print(f'''
                 Sted "{avtale.place}" byttet til "{nyttSted}"
                 ''')
                 avtale.place = nyttSted
-                print(avtale + '\n')
+                print(f'{avtale} \n')
             elif choice == '3':
                 print('Angi ny start: \n')
                 nyDato = inputDate()
@@ -64,7 +64,7 @@ class AvtaleList:
                 Starttidspunkt "{avtale.start}" byttet til "{nyDato}"
                 ''')
                 avtale.start = nyDato
-                print(avtale + '\n')
+                print(f'{avtale} \n')
             elif choice == '4':
                 nyVarighet = input('Gi ny varighet: \n')
                 if isInt(nyVarighet):
@@ -72,7 +72,7 @@ class AvtaleList:
                     Varighet "{avtale.duration}" byttet til "{nyVarighet}"             
                     ''')
                     avtale.duration = nyVarighet
-                    print(avtale + '\n')
+                    print(f'{avtale} \n')
                 else:
                     print('Skriv et tall')
 
