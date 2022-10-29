@@ -63,9 +63,13 @@ def AvtalePerDato(avtaleliste):
 def AvtaleMedSokeOrd (avtaleliste):
     avtaler_med_ord = []
     sokeord = input ('Skriv ord/setning som er del avtalenavn: ')
-    for avtale in avtaleliste:   
-        if sokeord.lower() in avtale.name.lower():
-            avtaler_med_ord.append (avtale)
+    sokeordliste=sokeord.split()
+    for avtale in avtaleliste:
+        for i in sokeordliste:
+            if i.lower() not in avtale.name.lower():
+                break
+        else:
+             avtaler_med_ord.append (avtale)
     if len(avtaler_med_ord) == 0:
         print (f'***Ingen avtaler inneholder sokeord "{sokeord}"***'+'\n')
     else:
