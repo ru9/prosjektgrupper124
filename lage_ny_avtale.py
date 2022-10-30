@@ -23,9 +23,9 @@ def NyAvtale():
                 break
 
             elif valg == 2:
-                year = int(input("År: "))
-                month = int(input("Måned: "))
-                day = int(input("Dag: "))
+                year = int(input("År (legg inn 4-sifret årstall): "))
+                month = int(input("Måned (legg inn månedsnummer) : "))
+                day = int(input("Dag (tall): "))
                 hour = int(input("Time: "))
                 minute = int(input("Minutt: "))
                 start = datetime(year, month, day, hour, minute)
