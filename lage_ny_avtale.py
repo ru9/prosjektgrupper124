@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Funksjon for å ta input fra bruker of lage et nytt avtaleobjekt
 
 from avtale import *
