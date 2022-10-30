@@ -20,10 +20,12 @@ while True:
     print("3. Skrive inn en ny avtale")
     print("4. Skrive ut alle avtalene") 
     print("5. Søk etter avtaler for gitt dato") 
-    print("6. Søk etter avtaler med søkeord i navnet") 
-    print("7. Avslutte")
+    print("6. Søk etter avtaler med søkeord i navnet")
+    print("7. Slett en avtale")
+    print("8. Rediger en avtale")
+    print("9. Avslutte")
 
-    kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 7: ")
+    kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 9: ")
 
     if kommando == "1":
         
@@ -44,8 +46,19 @@ while True:
             
     elif kommando == "6":
         ff.AvtaleMedSokeOrd(avtaleliste)
-        
+
     elif kommando == "7":
+        #Slett
+        ff.PrinteUtAlle(avtaleliste)
+        slett = int(input("Velg indeksen til avtalen du vil slette: "))
+        del avtaleliste[slett-1]
+
+    elif kommando == "8":
+        #Rediger
+        rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
+        print (f"{avtaleliste[rediger-1]}")
+
+    elif kommando == "9":
         print ('Programmet avsluttet')
 
         break
