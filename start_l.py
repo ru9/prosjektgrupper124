@@ -57,6 +57,7 @@ while True:
         #Rediger
         rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
         print (f"{avtaleliste[rediger-1]}")
+        avtaleliste[rediger-1] = lna.NyAvtale()
 
     elif kommando == "9":
         print ('Programmet avsluttet')
