@@ -24,19 +24,45 @@ def NyAvtale():
                 break
 
             elif valg == 2:
-                year = int(input("År (legg inn 4-sifret årstall): "))
-                month = int(input("Måned (legg inn månedsnummer) : "))
-                day = int(input("Dag (tall): "))
-                hour = int(input("Time: "))
-                minute = int(input("Minutt: "))
+                gyldig = False
+                while not gyldig:
+                    year = int(input("År (Oppgi årstall med fire siffer): "))
+                    if year >= 2022 and year <=  9999:
+                        gyldig = True
+                
+                gyldig = False
+                while not gyldig:
+                    month = int(input("Måned (legg inn månedsnummer) : "))
+                    if month >=1 and month <= 12:
+                        gyldig = True
+                
+                gyldig = False
+                while not gyldig:
+                    day = int(input("Dag (dato mellom 1 og 31): "))
+                    if day >= 1 and day <= 31:
+                        gyldig = True
+                        
+                gyldig = False
+                while not gyldig:
+                    hour = int(input("Time (00 til 24): "))
+                    if hour >= 00 and hour <= 24:
+                        gyldig = True
+                        
+                gyldig = False
+                while not gyldig:
+                    minute = int(input("Minutt: "))
+                    if minute >= 00 and minute <= 60:
+                        gyldig = True
+                
+                
                 start = datetime(year, month, day, hour, minute)
                 start = str(start)
                 break
 
         except KeyboardInterrupt:
-            exit()
+           exit()
         except:
-            print("Noe gikk galt, prøv igjen... ")
+           print("Noe gikk galt, prøv igjen... ")
     
     while True:
         try:
