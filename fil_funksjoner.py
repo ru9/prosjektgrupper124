@@ -29,7 +29,7 @@ def ReadAvtale(avtaleliste):
     from avtale import Avtale
     import csv
     try:       
-        with open("avtalefil.csv") as fil:
+        with open("avtalefil.txt") as fil:
             reader = csv.reader(fil)
             for row in reader:
                   avtale = Avtale(*row)
