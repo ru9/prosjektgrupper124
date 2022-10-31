@@ -54,18 +54,26 @@ class Menu:
 
             elif kommando == "7":
                 #Slett
-                ff.PrinteUtAlle(self.avtaleliste)
-                slett = int(input("Velg indeksen til avtalen du vil slette: "))
-                del self.avtaleliste[slett-1]
+                while True:
+                    try:
+                        ff.PrinteUtAlle(self.avtaleliste)
+                        slett = int(input("Velg indeksen til avtalen du vil slette: "))
+                        del self.avtaleliste[slett-1]
+                    except IndexError:
+                        print("Velg en gyldig indeks!")
 
             elif kommando == "8":
                 #Rediger
-                rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
-                print (f"{self.avtaleliste[rediger-1]}")
-                self.avtaleliste[rediger-1] = lna.NyAvtale()
+                while True:
+                    try:
+                        rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
+                        print (f"{self.avtaleliste[rediger-1]}")
+                        self.avtaleliste[rediger-1] = lna.NyAvtale()
+                    except IndexError:
+                        print("Velg en gyldig indeks!")
 
             elif kommando == '9':
-                self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange?')))
+                self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange? ')))
                 
 
             elif kommando == "10":
