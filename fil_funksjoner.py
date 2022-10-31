@@ -4,24 +4,30 @@ Created on Tue Oct 25 20:22:01 2022
 
 @author: alexa
 """
+def avtale_to_tuple(avtale):
+    return (avtale.name, avtale.place, avtale.start, avtale.duration)
+
+
 # Lagre avtale i en fil 
-def SaveAvtale(Avtale):
-  import pickle    
-  with open ('Avtalefil.dat', 'wb') as fil:
-     for i in Avtale:
-         pickle.dump(i, fil)
+def SaveAvtale(avtaleliste):
+  import csv  
+  with open ('avtalefil.csv', 'w', newline='') as fil:
+    writer = csv.writer(fil)
+    for avtale in avtaleliste:
+        row = avtale_to_tuple(avtale)
+        writer.writerow(row)                
   print ('Avtaleliste lagret i fil' + '\n')  
     
 #Lese alle avtaler fra en fil til en liste "Avtaleliste" som må lages før funksjonen kalles
 def ReadAvtale(avtaleliste):
-    import pickle
+    from avtale import Avtale
+    import csv
     try:       
-        with open('Avtalefil.dat', 'rb')  as fil:
-          while True:
-              try:
-                  avtaleliste.append (pickle.load (fil))
-              except EOFError:
-                  break
+        with open("avtalefil.csv") as fil:
+            reader = csv.reader(fil)
+            for row in reader:
+                  avtale = Avtale(*row)
+                  avtaleliste.append(avtale)      
         print ('Avtaleliste er lest fra fil' + '\n')
     except FileNotFoundError:
         print ('filen er ikke funnet'+'\n')
@@ -30,9 +36,8 @@ def ReadAvtale(avtaleliste):
 
 #Printe ut alle avtaler i avtaleliste
 def PrinteUtAlle(avtaleliste):
-    overskrift = input ('Skriv en overskrift for avtaleliste: ')
-    print (overskrift)
     if len(avtaleliste) !=0:
+        print ('Alle avtaler på avtaleliste: ')
         avtale_indeks = 0
         for i in avtaleliste:
             avtale_indeks +=1
@@ -44,10 +49,11 @@ def PrinteUtAlle(avtaleliste):
         
 #Printe ut og returnere liste med alle avtalene for spesifisert dato  
 def AvtalePerDato(avtaleliste):
+    
     dagens_avtaler = []
     dato = input ('Skriv dato du vil se avtaler for, i format YYYY-MM-DD: ')
     for avtale in avtaleliste:
-        avtaledato = str (avtale.start.date())
+        avtaledato = avtale.start[:10]
         if dato == avtaledato:
             dagens_avtaler.append (avtale)
     if len(dagens_avtaler) == 0:
@@ -78,6 +84,7 @@ def AvtaleMedSokeOrd (avtaleliste):
                print (f' {avtale} ')
     return avtaler_med_ord
     
-    
+#avtaleliste =[]
 
- 
+#ReadAvtale(avtaleliste)
+#AvtalePerDato(avtaleliste) 

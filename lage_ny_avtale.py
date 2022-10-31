@@ -20,6 +20,7 @@ def NyAvtale():
                 hour = random.randint(0, 24)
                 minute = random.randint(0, 60)
                 start = datetime(today.year, today.month, today.day+1, hour, minute)
+                start = str(start)
                 break
 
             elif valg == 2:
@@ -29,6 +30,7 @@ def NyAvtale():
                 hour = int(input("Time: "))
                 minute = int(input("Minutt: "))
                 start = datetime(year, month, day, hour, minute)
+                start = str(start)
                 break
 
         except KeyboardInterrupt:
