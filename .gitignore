@@ -9,6 +9,7 @@ __pycache__/
 
 # Auto-generated files
 Avtalefil.dat
+avtalefil.txt
 
 # C extensions
 *.so
