@@ -4,6 +4,11 @@ Created on Tue Oct 25 20:22:01 2022
 
 @author: alexa
 """
+
+from avtale import Avtale
+from datetime import datetime
+from random import randint
+
 def avtale_to_tuple(avtale):
     return (avtale.name, avtale.place, avtale.start, avtale.duration)
 
@@ -11,7 +16,7 @@ def avtale_to_tuple(avtale):
 # Lagre avtale i en fil 
 def SaveAvtale(avtaleliste):
   import csv  
-  with open ('avtalefil.csv', 'w', newline='') as fil:
+  with open ('avtalefil.txt', 'w', newline='') as fil:
     writer = csv.writer(fil)
     for avtale in avtaleliste:
         row = avtale_to_tuple(avtale)
@@ -53,7 +58,7 @@ def AvtalePerDato(avtaleliste):
     dagens_avtaler = []
     dato = input ('Skriv dato du vil se avtaler for, i format YYYY-MM-DD: ')
     for avtale in avtaleliste:
-        avtaledato = avtale.start[:10]
+        avtaledato = avtale.start
         if dato == avtaledato:
             dagens_avtaler.append (avtale)
     if len(dagens_avtaler) == 0:
@@ -83,8 +88,15 @@ def AvtaleMedSokeOrd (avtaleliste):
         for avtale in avtaler_med_ord:
                print (f' {avtale} ')
     return avtaler_med_ord
-    
-#avtaleliste =[]
 
-#ReadAvtale(avtaleliste)
-#AvtalePerDato(avtaleliste) 
+#fyller ut en liste med n antall avtaler, for å slippe å lage en hel liste selv
+def fillAvtaler( n = 5):
+    now = datetime.now()
+    avtaler  = []
+    for i in range (n):
+        #fyller ut avtaler med tilfeldig måned, dag, og tidspunkt
+        nyAvtale = Avtale((f'''Avtale {i + 1}'''),(f'''Sted  {i + 2}'''), 
+        datetime(now.year, randint(1, 12), randint(1, 28), randint(0, 23), randint(0, 59)), randint(0, 120) )
+        avtaler.append(nyAvtale)
+    return avtaler
+

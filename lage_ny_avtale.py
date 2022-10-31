@@ -19,7 +19,7 @@ def NyAvtale():
                 today = datetime.today()
                 hour = random.randint(0, 24)
                 minute = random.randint(0, 60)
-                start = datetime(today.year, today.month, today.day+1, hour, minute)
+                start = datetime(today.year, today.month, today.day, hour, minute)
                 start = str(start)
                 break
 
