@@ -59,6 +59,7 @@ class Menu:
                         ff.PrinteUtAlle(self.avtaleliste)
                         slett = int(input("Velg indeksen til avtalen du vil slette: "))
                         del self.avtaleliste[slett-1]
+                        break
                     except IndexError:
                         print("Velg en gyldig indeks!")
 
@@ -69,6 +70,7 @@ class Menu:
                         rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
                         print (f"{self.avtaleliste[rediger-1]}")
                         self.avtaleliste[rediger-1] = lna.NyAvtale()
+                        break
                     except IndexError:
                         print("Velg en gyldig indeks!")
 
