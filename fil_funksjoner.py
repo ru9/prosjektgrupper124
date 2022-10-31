@@ -8,6 +8,7 @@ Created on Tue Oct 25 20:22:01 2022
 from avtale import Avtale
 from datetime import datetime
 from random import randint
+from input_handler import inputDate
 
 def avtale_to_tuple(avtale):
     return (avtale.name, avtale.place, avtale.start, avtale.duration)
@@ -56,15 +57,17 @@ def PrinteUtAlle(avtaleliste):
 def AvtalePerDato(avtaleliste):
     
     dagens_avtaler = []
-    dato = input ('Skriv dato du vil se avtaler for, i format YYYY-MM-DD: ')
+    print('Søk etter hvilken dato? \n')
+    dato = inputDate()
+    f_dato = dato.strftime("%x")
     for avtale in avtaleliste:
-        avtaledato = avtale.start
+        avtaledato = datetime(avtale.start.year, avtale.start.month, avtale.start.day)
         if dato == avtaledato:
             dagens_avtaler.append (avtale)
     if len(dagens_avtaler) == 0:
-        print (f'***Ingen avtaler er funnet for dato {dato}***'+'\n')
+        print (f'***Ingen avtaler er funnet for dato {f_dato}***'+'\n')
     else:
-        print (f' Avtaler for dag {dato}', end='')
+        print (f' Avtaler for dag {f_dato}', end='')
         for avtale in dagens_avtaler:
                print (f' {avtale} ')
     return dagens_avtaler
