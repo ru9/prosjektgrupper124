@@ -71,3 +71,28 @@ def NyAvtale():
             print("Må være et tall. Prøv igjen... ")
 
     return Avtale(name, place, start, duration)
+
+def ny_kategori():
+    id = None
+    navn = None
+    prioritet = None
+    print('Legg til kategori: \n')
+    while not id:
+        id = input('id: ')
+    while not navn:
+        navn = input('navn: ')
+    while not prioritet:
+        prioritet = input('Prioritet: ')
+        try:
+            int(prioritet)
+        except:
+            print('Tast inn et tall mellom 1 og 3')
+            prioritet = None
+        else:
+            if int(prioritet) in range(1, 4):
+                break
+            else:
+                print('Tast inn et tall mellom 1 og 3')
+                prioritet = None
+    return Kategori(id, navn, prioritet)
+
