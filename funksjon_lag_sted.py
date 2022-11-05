@@ -45,5 +45,3 @@ def legg_til_sted():
     
     return Sted(id, navn, gateadresse, postnummer, poststed)
 
-ny = legg_til_sted()
-print(ny)
