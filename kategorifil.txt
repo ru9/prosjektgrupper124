@@ -1,0 +1,6 @@
+32,Kategori familie,1
+25,Kategori jobb,1
+91,Kategori venner,1
+90,Kategori skole,1
+30,Kategori borettslag,1
+75,Kategori trening,1
