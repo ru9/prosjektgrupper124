@@ -16,5 +16,33 @@ class Avtale:
     def formatData(self):
         return [self.name, self.place, self.start, self.duration]
 
+<<<<<<< Updated upstream
     
     
+=======
+    def legg_til_kategori(self, kategori):
+        self.kategorier.append(kategori)
+
+
+class Kategori:
+    def __init__(self, id, navn, prioritet = '1'):
+        self.id = id
+        self.navn = navn
+        self.prioritet = prioritet
+
+    def __str__(self):
+        return (f'''
+        id: {self.id}
+        navn: {self.navn}
+        prioritet: {self.translate_prio_to_str()}''')
+
+    def translate_prio_to_str(self):
+        if self.prioritet == '1':
+            return str('Vanlig')
+        elif self.prioritet == '2':
+            return str('Viktig')
+        elif self.prioritet == '3':
+            return str('Svært viktig')
+        else:
+            return str('Ugyldig prioritet')
+>>>>>>> Stashed changes
