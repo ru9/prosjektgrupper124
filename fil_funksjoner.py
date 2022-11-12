@@ -4,8 +4,6 @@ Created on Tue Oct 25 20:22:01 2022
 
 @author: alexa
 """
-<<<<<<< Updated upstream
-=======
 
 from avtale import Avtale 
 from avtale import Kategori
@@ -14,7 +12,7 @@ from datetime import datetime
 from random import randint
 from input_handler import inputDate
 
->>>>>>> Stashed changes
+
 def avtale_to_tuple(avtale):
     return (avtale.name, avtale.place, avtale.start, avtale.duration)
 
@@ -24,7 +22,7 @@ def kategori_to_tuple(kategori):
 # Lagre avtale i en fil 
 def SaveAvtale(avtaleliste):
   import csv  
-  with open ('avtalefil.csv', 'w', newline='') as fil:
+  with open ('avtalefil.txt', 'w', newline='') as fil:
     writer = csv.writer(fil)
     for avtale in avtaleliste:
         row = avtale_to_tuple(avtale)
@@ -36,7 +34,7 @@ def ReadAvtale(avtaleliste):
     from avtale import Avtale
     import csv
     try:       
-        with open("avtalefil.csv") as fil:
+        with open("avtalefil.txt") as fil:
             reader = csv.reader(fil)
             for row in reader:
                   avtale = Avtale(*row)
@@ -45,8 +43,6 @@ def ReadAvtale(avtaleliste):
     except FileNotFoundError:
         print ('filen er ikke funnet'+'\n')
         
-
-
 #Printe ut alle avtaler i avtaleliste
 def PrinteUtAlle(liste):
     if len(liste) !=0:
@@ -57,25 +53,24 @@ def PrinteUtAlle(liste):
             print (f'{i}' +'\n')
     else:
         print ('listen er tom' + '\n')
-        
-        
+                
 #Printe ut og returnere liste med alle avtalene for spesifisert dato  
 def AvtalePerDato(avtaleliste):
-    
     dagens_avtaler = []
-    dato = input ('Skriv dato du vil se avtaler for, i format YYYY-MM-DD: ')
+    print('Søk etter hvilken dato? \n')
+    dato = inputDate()
+    f_dato = dato.strftime("%x")
     for avtale in avtaleliste:
-        avtaledato = avtale.start[:10]
+        avtaledato = datetime(avtale.start.year, avtale.start.month, avtale.start.day)
         if dato == avtaledato:
             dagens_avtaler.append (avtale)
     if len(dagens_avtaler) == 0:
-        print (f'***Ingen avtaler er funnet for dato {dato}***'+'\n')
+        print (f'***Ingen avtaler er funnet for dato {f_dato}***'+'\n')
     else:
-        print (f' Avtaler for dag {dato}', end='')
+        print (f' Avtaler for dag {f_dato}', end='')
         for avtale in dagens_avtaler:
                print (f' {avtale} ')
     return dagens_avtaler
- 
     
 #printe ut og returnerer liste med alle avtalene som inneholder søkeord i tittel
 def AvtaleMedSokeOrd (avtaleliste):
@@ -95,13 +90,7 @@ def AvtaleMedSokeOrd (avtaleliste):
         for avtale in avtaler_med_ord:
                print (f' {avtale} ')
     return avtaler_med_ord
-    
-#avtaleliste =[]
 
-<<<<<<< Updated upstream
-#ReadAvtale(avtaleliste)
-#AvtalePerDato(avtaleliste) 
-=======
 #fyller ut en liste med n antall avtaler, for å slippe å lage en hel liste selv
 def fillAvtaler( n = 5):
     now = datetime.now()
@@ -156,4 +145,4 @@ def fillSteder( n = 5):
         (f'''Postested {i + 4}''') )
         steder.append(nySted)
     return steder
->>>>>>> Stashed changes
+
