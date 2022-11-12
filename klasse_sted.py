@@ -14,7 +14,13 @@ class Sted:
         self.postnummer = postnummer
         self.poststed = poststed
         
-    def __str__(self):
-        return f"Stedet har id {self.id} og navn {self.navn}. Adressen er {self.gateadresse}, {self.postnummer}, {self.poststed}"
+    def __str__(self):      
+        return (f'''
+        Stedet har id {self.id} 
+        navn: {self.navn}. 
+        Adressen: {self.gateadresse}
+        {self.postnummer}
+        {self.poststed}''')
+
         
         

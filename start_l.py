@@ -11,26 +11,31 @@ virker før funksjonene ligger der."""
 import fil_funksjoner as ff
 import lage_ny_avtale as lna
 
+
 class Menu:
     def __init__(self):
         self.avtaleliste = ff.fillAvtaler(5)
+        self.kategoriliste = ff.fillKategorier()
+        self.stedliste = ff.fillSteder()
+   
 
     def run(self):
-
         while True:   
             print("Du har følgende valg:")
             print("1. Lese inn avtaler fra fil")
             print("2. Skrive avtalene til fil")
             print("3. Skrive inn en ny avtale")
-            print("4. Skrive ut alle avtalene") 
+            print("4. Skrive ut alle avtalene/kategoriene/steder") 
             print("5. Søk etter avtaler for gitt dato") 
             print("6. Søk etter avtaler med søkeord i navnet")
             print("7. Slett en avtale")
             print("8. Rediger en avtale")
-            print('9. Lag en liste med avtaler')
-            print("10. Avslutte")
+            print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
+            print('10. Lese inn kategorier fra fil')
+            print('11. Skrive kategorier til fil')
+            print("12. Avslutte")
 
-            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 10: ")
+            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 12: ")
 
             if kommando == "1":
                 
@@ -44,7 +49,28 @@ class Menu:
                 self.avtaleliste.append(nyavtale)
                             
             elif kommando == "4":
-                ff.PrinteUtAlle(self.avtaleliste)
+                while True:
+                    try:
+                        print("""For å skrive ut alle:
+              avtaler - velg 1
+              kategorier - velg 2
+              steder - velg 3""")
+                        valg = int(input("Velg: "))
+        
+                        if valg == 1:
+                            ff.PrinteUtAlle(self.avtaleliste)  
+                            break
+                        elif valg == 2:
+                           ff.PrinteUtAlle(self.kategoriliste)
+                           break
+                        elif valg == 3:
+                           ff.PrinteUtAlle(self.stedliste)
+                           break
+                        else:
+                           print("Velg mellom 1 og 3")  
+                           
+                    except ValueError:
+                         print("Må være et tall. Prøv igjen... ")
             
             elif kommando == "5":
                 ff.AvtalePerDato(self.avtaleliste)
@@ -75,10 +101,17 @@ class Menu:
                         print("Velg en gyldig indeks!")
 
             elif kommando == '9':
-                self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange? ')))
-                
-
+                self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange avtaler? ')))
+                self.kategoriliste = ff.fillKategorier()
+                self.stedliste = ff.fillSteder(int(input('Fyll med hvor mange steder? ')))
+            
             elif kommando == "10":
+                ff.ReadKategori(self.kategoriliste)
+                            
+            elif kommando == "11":
+                ff.SaveKategori(self.kategoriliste)
+
+            elif kommando == "12":
                 print ('Programmet avsluttet')
 
                 break
