@@ -108,4 +108,7 @@ class Menu:
                 self.stedliste = ff.fillSteder(int(input('Fyll med hvor mange steder? ')))
             
             elif kommando == "10":
-                print ('Programmet avsluttet')         
+                print ('Programmet avsluttet')  
+                break
+            
+            
