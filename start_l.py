@@ -14,16 +14,16 @@ import lage_ny_avtale as lna
 
 class Menu:
     def __init__(self):
-        self.avtaleliste = ff.fillAvtaler(5)
-        self.kategoriliste = ff.fillKategorier()
-        self.stedliste = ff.fillSteder()
+       self.avtaleliste = ff.fillAvtaler(5)
+       self.kategoriliste = ff.fillKategorier()
+       self.stedliste = ff.fillSteder()
    
 
     def run(self):
         while True:   
             print("Du har følgende valg:")
-            print("1. Lese inn avtaler fra fil")
-            print("2. Skrive avtalene til fil")
+            print("1. Lese inn data fra filer")
+            print("2. Skrive inn data til filer")
             print("3. Skrive inn en ny avtale")
             print("4. Skrive ut alle avtalene/kategoriene/steder") 
             print("5. Søk etter avtaler for gitt dato") 
@@ -31,18 +31,20 @@ class Menu:
             print("7. Slett en avtale")
             print("8. Rediger en avtale")
             print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
-            print('10. Lese inn kategorier fra fil')
-            print('11. Skrive kategorier til fil')
-            print("12. Avslutte")
+            print("10. Avslutte")
 
-            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 12: ")
+            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 10: ")
 
             if kommando == "1":
                 
                 ff.ReadAvtale(self.avtaleliste)
+                ff.ReadKategori(self.kategoriliste)
+                ff.ReadSted(self.stedliste)
                             
             elif kommando == "2":
                 ff.SaveAvtale(self.avtaleliste)
+                ff.SaveKategori(self.kategoriliste)
+                ff.SaveSted(self.stedliste)
                 
             elif kommando == "3":
                 nyavtale = lna.NyAvtale()
@@ -106,12 +108,4 @@ class Menu:
                 self.stedliste = ff.fillSteder(int(input('Fyll med hvor mange steder? ')))
             
             elif kommando == "10":
-                ff.ReadKategori(self.kategoriliste)
-                            
-            elif kommando == "11":
-                ff.SaveKategori(self.kategoriliste)
-
-            elif kommando == "12":
-                print ('Programmet avsluttet')
-
-                break
+                print ('Programmet avsluttet')         

@@ -1,0 +1,21 @@
+<<<<<<< Updated upstream
+32,Kategori familie,1
+25,Kategori jobb,1
+91,Kategori venner,1
+90,Kategori skole,1
+30,Kategori borettslag,1
+75,Kategori trening,1
+=======
+54,Kategori familie,1
+57,Kategori jobb,1
+61,Kategori venner,1
+73,Kategori skole,1
+52,Kategori borettslag,1
+72,Kategori trening,1
+32,Kategori familie,1
+17,Kategori jobb,1
+72,Kategori venner,1
+83,Kategori skole,1
+52,Kategori borettslag,1
+65,Kategori trening,1
+>>>>>>> Stashed changes

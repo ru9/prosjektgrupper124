@@ -7,7 +7,7 @@ Created on Tue Oct 25 20:22:01 2022
 
 from avtale import Avtale 
 from avtale import Kategori
-from klasse_sted import Sted
+from avtale import Sted
 from datetime import datetime
 from random import randint
 from input_handler import inputDate
@@ -18,6 +18,9 @@ def avtale_to_tuple(avtale):
 
 def kategori_to_tuple(kategori):
     return (kategori.id, kategori.navn, kategori.prioritet)
+
+def sted_to_tuple(sted):
+    return (sted.id, sted.navn, sted.gateadresse, sted.postnummer, sted.poststed)
 
 # Lagre avtale i en fil 
 def SaveAvtale(avtaleliste):
@@ -42,7 +45,56 @@ def ReadAvtale(avtaleliste):
         print ('Avtaleliste er lest fra fil' + '\n')
     except FileNotFoundError:
         print ('filen er ikke funnet'+'\n')
+
         
+# Lagre kategori i en fil 
+def SaveKategori(kategoriliste):
+  import csv  
+  with open ('kategorifil.txt', 'w', newline='') as fil:
+    writer = csv.writer(fil)
+    for kategori in kategoriliste:
+        row = kategori_to_tuple(kategori)
+        writer.writerow(row)                
+  print ('Kategoriliste lagret i fil' + '\n')  
+    
+#Lese alle kategorier fra en fil til en liste "Kategoriliste" som må lages før funksjonen kalles
+def ReadKategori(kategoriliste):
+    from avtale import Kategori
+    import csv
+    try:       
+        with open("kategorifil.txt") as fil:
+            reader = csv.reader(fil)
+            for row in reader:
+                  kategori = Kategori(*row)
+                  kategoriliste.append(kategori)      
+        print ('Kategoriliste er lest fra fil' + '\n')
+    except FileNotFoundError:
+        print ('filen er ikke funnet'+'\n')
+
+# Lagre kategori i en fil 
+def SaveSted(stedliste):
+   import csv  
+   with open ('stedfil.txt', 'w', newline='') as fil:
+     writer = csv.writer(fil)
+     for sted in stedliste:
+         row = sted_to_tuple(sted)
+         writer.writerow(row)                
+   print ('Stedliste lagret i fil' + '\n')  
+     
+ #Lese alle kategorier fra en fil til en liste "Kategoriliste" som må lages før funksjonen kalles
+def ReadSted(stedliste):
+     from avtale import Sted
+     import csv
+     try:       
+         with open("stedfil.txt") as fil:
+             reader = csv.reader(fil)
+             for row in reader:
+                   sted = Sted(*row)
+                   stedliste.append(sted)      
+         print ('Stedliste er lest fra fil' + '\n')
+     except FileNotFoundError:
+         print ('filen er ikke funnet'+'\n')       
+
 #Printe ut alle avtaler i avtaleliste
 def PrinteUtAlle(liste):
     if len(liste) !=0:
@@ -102,29 +154,7 @@ def fillAvtaler( n = 5):
         avtaler.append(nyAvtale)
     return avtaler
 
-# Lagre kategori i en fil 
-def SaveKategori(kategoriliste):
-  import csv  
-  with open ('kategorifil.txt', 'w', newline='') as fil:
-    writer = csv.writer(fil)
-    for kategori in kategoriliste:
-        row = kategori_to_tuple(kategori)
-        writer.writerow(row)                
-  print ('Kategoriliste lagret i fil' + '\n')  
-    
-#Lese alle kategorier fra en fil til en liste "Kategoriliste" som må lages før funksjonen kalles
-def ReadKategori(kategoriliste):
-    from avtale import Kategori
-    import csv
-    try:       
-        with open("kategorifil.txt") as fil:
-            reader = csv.reader(fil)
-            for row in reader:
-                  kategori = Kategori(*row)
-                  kategoriliste.append(kategori)      
-        print ('Kategoriliste er lest fra fil' + '\n')
-    except FileNotFoundError:
-        print ('filen er ikke funnet'+'\n')
+
         
 #fyller ut en liste med default kategorier
 def fillKategorier():

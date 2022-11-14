@@ -5,6 +5,7 @@ Created on Fri Nov  4 20:49:15 2022
 @author: AOstebo
 """
 
+""" ALt dette er flyttet inn i avtale.py 
 class Sted:
     
     def __init__(self, id, navn, gateadresse, postnummer, poststed):
@@ -21,6 +22,7 @@ class Sted:
         Adressen: {self.gateadresse}
         {self.postnummer}
         {self.poststed}''')
+"""
 
         
         
