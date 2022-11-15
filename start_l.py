@@ -28,8 +28,8 @@ class Menu:
             print("4. Skrive ut alle avtalene/kategoriene/steder") 
             print("5. Søk etter avtaler for gitt dato") 
             print("6. Søk etter avtaler med søkeord i navnet")
-            print("7. Slett en avtale")
-            print("8. Rediger en avtale")
+            print("7. Tomt menyvalg")
+            print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale")
             print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
             print("10. Avslutte")
 
@@ -81,26 +81,59 @@ class Menu:
                 ff.AvtaleMedSokeOrd(self.avtaleliste)
 
             elif kommando == "7":
-                #Slett
-                while True:
-                    try:
-                        ff.PrinteUtAlle(self.avtaleliste)
-                        slett = int(input("Velg indeksen til avtalen du vil slette: "))
-                        del self.avtaleliste[slett-1]
-                        break
-                    except IndexError:
-                        print("Velg en gyldig indeks!")
+                # Slett er flyttet til 8, åpen for bruk
+                print("Menyvalg åpen for bruk")
 
             elif kommando == "8":
-                #Rediger
+                #Slett, Rediger avtale eller legg Kategori til Avtale
                 while True:
                     try:
-                        rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
-                        print (f"{self.avtaleliste[rediger-1]}")
-                        self.avtaleliste[rediger-1] = lna.NyAvtale()
-                        break
-                    except IndexError:
-                        print("Velg en gyldig indeks!")
+                        print("""Velg mellom:
+            1 - Slett en Avtale
+            2 - Rediger en Avtale
+            3 - Legg Kategori til Avtale""")
+                        valg = int(input("Velg et nummer: "))
+
+                        if valg == 1:
+                            while True:
+                                try:
+                                    ff.PrinteUtAlle(self.avtaleliste)
+                                    slett = int(input("Velg indeksen til avtalen du vil slette: "))
+                                    del self.avtaleliste[slett - 1]
+                                    break
+                                except IndexError:
+                                    print("Velg en gyldig indeks!")
+                        elif valg == 2:
+                            while True:
+                                try:
+                                    ff.PrinteUtAlle(self.avtaleliste)
+                                    rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
+                                    print(f"{self.avtaleliste[rediger - 1]}")
+                                    self.avtaleliste[rediger - 1] = lna.NyAvtale()
+                                    break
+                                except IndexError:
+                                    print("Velg en gyldig indeks!")
+                            break
+                        elif valg == 3:
+                            while True:
+                                try:
+                                    ff.PrinteUtAlle(self.avtaleliste)
+                                    AvtaleTilKat = int(input("Velg indeksen til avtalen du vil legge til Kategori: "))
+                                    ff.PrinteUtAlle(self.kategoriliste)
+                                    KatTilAvtale = int(input("Velg indeksen til Katagorien over du vil tilegne Avtalen: "))
+                                    print(f"{self.avtaleliste[AvtaleTilKat - 1]}" + '\n' + f"{self.kategoriliste[KatTilAvtale - 1]}" + '\n')
+                                    BekreftKat = str(input("Vil du knytte Avtalen og Kategorien over sammen? (ja/nei): "))
+                                    # Legger til funksjonen som slår sammen avatlen og kategorien her
+                                except IndexError:
+                                    print("Velg en gyldig indeks!")
+                                break
+                        else:
+                            print("Velg mellom 1 og 3")
+
+                    except ValueError:
+                        print("Må være et tall. Prøv igjen... ")
+                    break
+
 
             elif kommando == '9':
                 self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange avtaler? ')))
