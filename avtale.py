@@ -1,42 +1,22 @@
 class Avtale:
-    def __init__(self, name, place, start, duration, kategorier=None, sted=None):
+    def __init__(self, name, place, start, duration):
         self.name = name
         self.place = place
         self.start = start
         self.duration = duration
         self.kategorier = []
-        self.sted = sted
 
     def __str__(self):
-      if len(self.kategorier)!=0 and self.sted!=None: 
-          return (f'''
-          {self.name}
-          At: {self.place}
-          Start: {self.start}
-          Duration: {self.duration} minutes
-          Kategorier: {[kat.navn for kat in self.kategorier]}
-          Sted: {self.sted.navn}''')
-      elif self.sted!=None: 
-          return (f'''
-          {self.name}
-          At: {self.place}
-          Start: {self.start}
-          Duration: {self.duration} minutes
-          Sted: {self.sted.navn}''')
-      elif len(self.kategorier)!=0: 
-           return (f'''
-           {self.name}
-           At: {self.place}
-           Start: {self.start}
-           Duration: {self.duration} minutes
-           Kategorier: {[kat.navn for kat in self.kategorier]}''')
-      else:
-           return (f'''
-           {self.name}
-           At: {self.place}
-           Start: {self.start}
-           Duration: {self.duration} minutes.''')
-
+        kategori_str = []
+        for kategori in self.kategorier:
+            kategori_str.append(f'{kategori.navn} Prioritet: {kategori.translate_prio_to_str()}')
+        return (f'''
+        {self.name}
+        At: {self.place}
+        Start: {self.start}
+        Duration: {self.duration} minutes
+        Kategorier: {kategori_str}
+        ''')
    
     #funksjon som returnerer avtale variabler på et format som er enkelt å lese inn fra fil
     def formatData(self):
@@ -45,8 +25,6 @@ class Avtale:
     def legg_til_kategori(self, kategori):
         self.kategorier.append(kategori)
 
-    def legg_til_sted(self, sted):
-         self.sted=sted
 
 class Kategori:
     def __init__(self, id, navn, prioritet = '1'):
@@ -86,7 +64,7 @@ class Sted:
       if self.gateadresse!=None and self.postnummer!=None and self.poststed!=None:  
         return (f'''
         Stedet har id {self.id} 
-        navn: {self.navn} 
+        navn: {self.navn}. 
         Adressen: {self.gateadresse}
         {self.postnummer}
         {self.poststed}''')
@@ -94,13 +72,13 @@ class Sted:
       elif  self.gateadresse!=None and self.postnummer!=None:  
          return (f'''
          Stedet har id {self.id} 
-         navn: {self.navn} 
+         navn: {self.navn}. 
          Adressen: {self.gateadresse}
          {self.postnummer}''')
       elif  self.gateadresse!=None:  
          return (f'''
          Stedet har id {self.id} 
-         navn: {self.navn} 
+         navn: {self.navn}. 
          Adressen: {self.gateadresse}''')
       else:
           return (f'''
