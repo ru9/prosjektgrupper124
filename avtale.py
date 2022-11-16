@@ -7,11 +7,16 @@ class Avtale:
         self.kategorier = []
 
     def __str__(self):
+        kategori_str = []
+        for kategori in self.kategorier:
+            kategori_str.append(f'{kategori.navn} Prioritet: {kategori.translate_prio_to_str()}')
         return (f'''
         {self.name}
         At: {self.place}
         Start: {self.start}
-        Duration: {self.duration} minutes''')
+        Duration: {self.duration} minutes
+        Kategorier: {kategori_str}
+        ''')
    
     #funksjon som returnerer avtale variabler på et format som er enkelt å lese inn fra fil
     def formatData(self):
