@@ -3,3 +3,4 @@
 2,kontoret,Eiganesveien,4008,Stavanger
 3,legekontor,Nytorget,4012,Stavanger
 4,barnehage,Risabergveien,4056,Tananger
+
