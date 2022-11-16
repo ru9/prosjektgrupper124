@@ -199,8 +199,6 @@ def AvtaleMedSokeOrd (avtaleliste):
 def fillAvtaler( n, steder, kategorier):
     now = datetime.now()
     avtaler  = []
-    print(len(steder))
-    print(len(kategorier))
     for i in range (n):
         #fyller ut avtaler med tilfeldig måned, dag, og tidspunkt
         nyAvtale = Avtale((f'''Avtale {i + 1}'''),steder[randint(0, len(steder)-1)], 
