@@ -121,7 +121,7 @@ def ReadKategori(kategoriliste):
     except:
         print ('filen er ikke funnet'+'\n')
 
-# Lagre kategori i en fil 
+# Lagre sted i en fil 
 def SaveSted(stedliste):
    import csv  
    with open ('stedfil.txt', 'w', newline='') as fil:
@@ -131,7 +131,7 @@ def SaveSted(stedliste):
          writer.writerow(row)                
    print ('Stedliste lagret i fil' + '\n')  
      
- #Lese alle kategorier fra en fil til en liste "Kategoriliste" som må lages før funksjonen kalles
+ #Lese alle steder fra en fil til en liste "stedfil.txt" som må lages før funksjonen kalles
 def ReadSted(stedliste):
      from avtale import Sted
      import csv

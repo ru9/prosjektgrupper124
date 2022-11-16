@@ -51,7 +51,7 @@ class Menu:
                 ff.SaveSted(self.stedliste)
                 
             elif kommando == "3":
-                nyavtale = lna.NyAvtale()
+                nyavtale = lna.NyAvtale(self.stedliste)
                 self.avtaleliste.append(nyavtale)
                             
             elif kommando == "4":
