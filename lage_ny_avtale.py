@@ -19,24 +19,48 @@ def NyAvtale():
                 today = datetime.today()
                 hour = random.randint(0, 24)
                 minute = random.randint(0, 60)
-                start = datetime(today.year, today.month, today.day+1, hour, minute)
-                start = str(start)
+                start = datetime(today.year, today.month, today.day, hour, minute)
                 break
 
             elif valg == 2:
-                year = int(input("År: "))
-                month = int(input("Måned: "))
-                day = int(input("Dag: "))
-                hour = int(input("Time: "))
-                minute = int(input("Minutt: "))
+                gyldig = False
+                while not gyldig:
+                    year = int(input("År (Oppgi årstall med fire siffer): "))
+                    if year >= 2022 and year <=  9999:
+                        gyldig = True
+                
+                gyldig = False
+                while not gyldig:
+                    month = int(input("Måned (legg inn månedsnummer) : "))
+                    if month >=1 and month <= 12:
+                        gyldig = True
+                
+                gyldig = False
+                while not gyldig:
+                    day = int(input("Dag (dato mellom 1 og 31): "))
+                    if day >= 1 and day <= 31:
+                        gyldig = True
+                        
+                gyldig = False
+                while not gyldig:
+                    hour = int(input("Time (00 til 24): "))
+                    if hour >= 00 and hour <= 24:
+                        gyldig = True
+                        
+                gyldig = False
+                while not gyldig:
+                    minute = int(input("Minutt: "))
+                    if minute >= 00 and minute <= 60:
+                        gyldig = True
+                
+                
                 start = datetime(year, month, day, hour, minute)
-                start = str(start)
                 break
 
         except KeyboardInterrupt:
-            exit()
+           exit()
         except:
-            print("Noe gikk galt, prøv igjen... ")
+           print("Noe gikk galt, prøv igjen... ")
     
     while True:
         try:
@@ -46,12 +70,14 @@ def NyAvtale():
         except ValueError:
             print("Må være et tall. Prøv igjen... ")
 
-<<<<<<< Updated upstream
-    return Avtale(name, place, start, duration)
-=======
+
     return Avtale(name, place, start, duration)
 
-def NyKategori():
+
+
+
+def ny_kategori():
+
     id = None
     navn = None
     prioritet = None
@@ -75,33 +101,4 @@ def NyKategori():
                 prioritet = None
     return Kategori(id, navn, prioritet)
 
-def NySted():
-    id = None
-    navn = None
-    gateadresse = None
-    postnummer = None
-    poststed = None
-    print('Legg til sted: \n')
-    while not id:
-        id = input('id: ')
-    while not navn:
-        navn = input('navn: ')
-    print("For legge inn gateadresse, postnummer og poststed velg 1; for å hoppe over velg 2: ")
-    while not gateadresse:
-        try:        
-            valg = int(input("Velg 1 eller 2: "))    
-            if valg==1:
-                gateadresse = input('gateadresse: ') 
-                postnummer = input('postnummer: ')
-                poststed = input ('poststed: ')
-            elif valg==2:
-                gateadress=None
-                postnummer=None
-                poststed=None
-                break
-        except KeyboardInterrupt:
-           exit()
-        except:
-           print('Tast inn et tall mellom 1 og 2')
-    return Sted(id, navn, gateadresse, postnummer, poststed)
->>>>>>> Stashed changes
+

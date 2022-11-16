@@ -10,40 +10,16 @@ velger avslutt.print-setningene under kommandoene er bare for å teste om script
 virker før funksjonene ligger der."""
 import fil_funksjoner as ff
 import lage_ny_avtale as lna
-avtaleliste = [] 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
+
 class Menu:
     def __init__(self):
        self.avtaleliste = ff.fillAvtaler(5)
        self.kategoriliste = ff.fillKategorier()
        self.stedliste = ff.fillSteder()
    
->>>>>>> Stashed changes
 
-while True:   
-    print("Du har følgende valg:")
-    print("1. Lese inn avtaler fra fil")
-    print("2. Skrive avtalene til fil")
-    print("3. Skrive inn en ny avtale")
-    print("4. Skrive ut alle avtalene") 
-    print("5. Søk etter avtaler for gitt dato") 
-    print("6. Søk etter avtaler med søkeord i navnet")
-    print("7. Slett en avtale")
-    print("8. Rediger en avtale")
-    print("9. Avslutte")
-
-<<<<<<< Updated upstream
-    kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 9: ")
-
-    if kommando == "1":
-        
-        ff.ReadAvtale(avtaleliste)
-=======
+    def run(self):
         while True:   
             print("Du har følgende valg:")
             print("1. Lese inn data fra filer")
@@ -52,8 +28,8 @@ while True:
             print("4. Skrive ut alle avtalene/kategoriene/steder") 
             print("5. Søk etter avtaler for gitt dato") 
             print("6. Søk etter avtaler med søkeord i navnet")
-            print("7. Slett en avtale")
-            print("8. Rediger en avtale")
+            print("7. Tomt menyvalg")
+            print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale")
             print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
             print("10. Avslutte")
 
@@ -100,57 +76,72 @@ while True:
             
             elif kommando == "5":
                 ff.AvtalePerDato(self.avtaleliste)
->>>>>>> Stashed changes
                     
-    elif kommando == "2":
-        ff.SaveAvtale(avtaleliste)
-         
-    elif kommando == "3":
-        nyavtale = lna.NyAvtale()
-        avtaleliste.append(nyavtale)
-                      
-    elif kommando == "4":
-        ff.PrinteUtAlle(avtaleliste)
-    
-    elif kommando == "5":
-        ff.AvtalePerDato(avtaleliste)
-            
-    elif kommando == "6":
-        ff.AvtaleMedSokeOrd(avtaleliste)
+            elif kommando == "6":
+                ff.AvtaleMedSokeOrd(self.avtaleliste)
 
-    elif kommando == "7":
-        #Slett
-        ff.PrinteUtAlle(avtaleliste)
-        slett = int(input("Velg indeksen til avtalen du vil slette: "))
-        del avtaleliste[slett-1]
+            elif kommando == "7":
+                # Slett er flyttet til 8, åpen for bruk
+                print("Menyvalg åpen for bruk")
 
-<<<<<<< Updated upstream
-    elif kommando == "8":
-        #Rediger
-        rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
-        print (f"{avtaleliste[rediger-1]}")
-        avtaleliste[rediger-1] = lna.NyAvtale()
+            elif kommando == "8":
+                #Slett, Rediger avtale eller legg Kategori til Avtale
+                while True:
+                    try:
+                        print("""Velg mellom:
+            1 - Slett en Avtale
+            2 - Rediger en Avtale
+            3 - Legg Kategori til Avtale""")
+                        valg = int(input("Velg et nummer: "))
 
-    elif kommando == "9":
-        print ('Programmet avsluttet')
-=======
+                        if valg == 1:
+                            while True:
+                                try:
+                                    ff.PrinteUtAlle(self.avtaleliste)
+                                    slett = int(input("Velg indeksen til avtalen du vil slette: "))
+                                    del self.avtaleliste[slett - 1]
+                                    break
+                                except IndexError:
+                                    print("Velg en gyldig indeks!")
+                        elif valg == 2:
+                            while True:
+                                try:
+                                    ff.PrinteUtAlle(self.avtaleliste)
+                                    rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
+                                    print(f"{self.avtaleliste[rediger - 1]}")
+                                    self.avtaleliste[rediger - 1] = lna.NyAvtale()
+                                    break
+                                except IndexError:
+                                    print("Velg en gyldig indeks!")
+                            break
+                        elif valg == 3:
+                            while True:
+                                try:
+                                    ff.PrinteUtAlle(self.avtaleliste)
+                                    AvtaleTilKat = int(input("Velg indeksen til avtalen du vil legge til Kategori: "))
+                                    ff.PrinteUtAlle(self.kategoriliste)
+                                    KatTilAvtale = int(input("Velg indeksen til Katagorien over du vil tilegne Avtalen: "))
+                                    print(f"{self.avtaleliste[AvtaleTilKat - 1]}" + '\n' + f"{self.kategoriliste[KatTilAvtale - 1]}" + '\n')
+                                    BekreftKat = str(input("Vil du knytte Avtalen og Kategorien over sammen? (ja/nei): "))
+                                    # Legger til funksjonen som slår sammen avatlen og kategorien her
+                                except IndexError:
+                                    print("Velg en gyldig indeks!")
+                                break
+                        else:
+                            print("Velg mellom 1 og 3")
+
+                    except ValueError:
+                        print("Må være et tall. Prøv igjen... ")
+                    break
+
+
             elif kommando == '9':
                 self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange avtaler? ')))
                 self.kategoriliste = ff.fillKategorier()
                 self.stedliste = ff.fillSteder(int(input('Fyll med hvor mange steder? ')))
             
-<<<<<<< Updated upstream
-            if kommando == "10":
-                
-                ff.ReadKategori(self.kategoriliste)
-                            
-            elif kommando == "11":
-                ff.SaveKategori(self.kategoriliste)
-=======
->>>>>>> Stashed changes
-
             elif kommando == "10":
-                print ('Programmet avsluttet')
->>>>>>> Stashed changes
-
-        break
+                print ('Programmet avsluttet')  
+                break
+            
+            
