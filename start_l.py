@@ -14,9 +14,10 @@ import lage_ny_avtale as lna
 
 class Menu:
     def __init__(self):
-       self.avtaleliste = ff.fillAvtaler(5)
+       
        self.kategoriliste = ff.fillKategorier()
        self.stedliste = ff.fillSteder()
+       self.avtaleliste = ff.fillAvtaler(5, self.stedliste, self.kategoriliste)
    
 
     def run(self):
@@ -31,9 +32,10 @@ class Menu:
             print("7. Tomt menyvalg")
             print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale")
             print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
-            print("10. Avslutte")
+            print('10. Søk etter avtaler på sted')
+            print("11. Avslutte")
 
-            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 10: ")
+            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 11: ")
 
             if kommando == "1":
                 
@@ -139,8 +141,21 @@ class Menu:
                 self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange avtaler? ')))
                 self.kategoriliste = ff.fillKategorier()
                 self.stedliste = ff.fillSteder(int(input('Fyll med hvor mange steder? ')))
+
+            elif kommando == '10':
+                ids = []
+                for sted in self.stedliste:
+                    print(f''' ({sted.id})   {sted.navn}''')
+                    ids.append(sted.id)
+                valg = input('Hvilket sted? Tast id: ')
+                if valg in ids:
+                    matches = ff.finn_avtaler_paa_sted(valg, self.avtaleliste)
+                    for avtale in matches:
+                        print(avtale)
+                else:
+                    print('Tast en gyldig id')
             
-            elif kommando == "10":
+            elif kommando == "11":
                 print ('Programmet avsluttet')  
                 break
             
