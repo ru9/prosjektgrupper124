@@ -21,14 +21,14 @@ def NyAvtale(stedliste):
                 PrinteUtAlle(stedliste)
                 indeks_valg = int(input("Bruk indeks og velg plassering: ")) - 1
                 sted_id = stedliste[indeks_valg].id
-                sted = sted_id
+                sted = stedliste[indeks_valg]
                 break
                 
         elif valg == 2:
                 ny_id = input("Id: ")
                 nytt_sted = input("Navn på nytt sted: ")
-                Sted(ny_id, nytt_sted)
-                sted = ny_id
+                sted = Sted(ny_id, nytt_sted)
+                stedliste.append(sted)
                 break
     
     while True:
@@ -93,7 +93,7 @@ def NyAvtale(stedliste):
             print("Må være et tall. Prøv igjen... ")
 
 
-    return Avtale(name, place, start, duration)
+    return Avtale(name, place, start, duration, sted = sted)
 
 
 
