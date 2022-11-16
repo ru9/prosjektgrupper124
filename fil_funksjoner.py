@@ -162,8 +162,8 @@ def fillKategorier():
     navneliste = ["familie", "jobb", "venner", "skole", "borettslag", "trening"]
     for i in navneliste:
         id = randint(1, 100)
-        nyKategori = Kategori((id), (f'''Kategori {i}'''))
-        kategorier.append(nyKategori)
+        NyKategori = Kategori((id), (f'''Kategori {i}'''))
+        kategorier.append(NyKategori)
     return kategorier
 
 #fyller ut en liste med n antall steder, for å slippe å lage en hel liste selv
@@ -171,8 +171,8 @@ def fillSteder( n = 5):
     steder  = []
     for i in range (n):
         #fyller ut steder med tilfeldige verdiger
-        nySted = Sted((f'''{randint(1,100)}'''),(f'''Sted {i + 2}'''), (f'''Gatenavn {i + 3}'''), randint(1000,9999),
+        NySted = Sted((f'''{randint(1,100)}'''),(f'''Sted {i + 2}'''), (f'''Gatenavn {i + 3}'''), randint(1000,9999),
         (f'''Postested {i + 4}''') )
-        steder.append(nySted)
+        steder.append(NySted)
     return steder
 

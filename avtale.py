@@ -48,7 +48,7 @@ class Kategori:
 
 class Sted:
     
-    def __init__(self, id, navn, gateadresse, postnummer, poststed):
+    def __init__(self, id, navn, gateadresse=None, postnummer=None, poststed=None):
         self.id = id
         self.navn = navn
         self.gateadresse = gateadresse
@@ -56,11 +56,28 @@ class Sted:
         self.poststed = poststed
         
     def __str__(self):      
+      if self.gateadresse!=None and self.postnummer!=None and self.poststed!=None:  
         return (f'''
         Stedet har id {self.id} 
         navn: {self.navn}. 
         Adressen: {self.gateadresse}
         {self.postnummer}
         {self.poststed}''')
+
+      elif  self.gateadresse!=None and self.postnummer!=None:  
+         return (f'''
+         Stedet har id {self.id} 
+         navn: {self.navn}. 
+         Adressen: {self.gateadresse}
+         {self.postnummer}''')
+      elif  self.gateadresse!=None:  
+         return (f'''
+         Stedet har id {self.id} 
+         navn: {self.navn}. 
+         Adressen: {self.gateadresse}''')
+      else:
+          return (f'''
+          Stedet har id {self.id} 
+          navn: {self.navn}''')   
 
 

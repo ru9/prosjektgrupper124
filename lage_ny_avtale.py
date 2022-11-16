@@ -70,9 +70,14 @@ def NyAvtale():
         except ValueError:
             print("Må være et tall. Prøv igjen... ")
 
+
     return Avtale(name, place, start, duration)
 
+
+
+
 def ny_kategori():
+
     id = None
     navn = None
     prioritet = None
@@ -95,4 +100,5 @@ def ny_kategori():
                 print('Tast inn et tall mellom 1 og 3')
                 prioritet = None
     return Kategori(id, navn, prioritet)
+
 
