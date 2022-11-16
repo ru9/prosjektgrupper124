@@ -48,7 +48,7 @@ class Kategori:
 
 class Sted:
     
-    def __init__(self, id, navn, gateadresse, postnummer, poststed):
+    def __init__(self, id, navn, gateadresse = None, postnummer = None, poststed = None):
         self.id = id
         self.navn = navn
         self.gateadresse = gateadresse

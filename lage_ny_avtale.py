@@ -3,11 +3,33 @@
 
 from avtale import *
 from datetime import datetime
+from fil_funksjoner import *
 import random
 
-def NyAvtale():
+def NyAvtale(stedliste):
     name = input("Navn på avtalen: ")
     place = input("Sted: ")
+
+
+    while True:
+        print("Hvor skal møtet være?")
+        print("1. Velg sted fra liste\n2. Skriv inn sted manuelt")
+        valg = int(input("Velg en: "))
+
+        
+        if valg == 1:
+                PrinteUtAlle(stedliste)
+                indeks_valg = int(input("Bruk indeks og velg plassering: ")) - 1
+                sted_id = stedliste[indeks_valg].id
+                sted = sted_id
+                break
+                
+        elif valg == 2:
+                ny_id = input("Id: ")
+                nytt_sted = input("Navn på nytt sted: ")
+                Sted(ny_id, nytt_sted)
+                sted = ny_id
+                break
     
     while True:
         try:
@@ -95,4 +117,3 @@ def ny_kategori():
                 print('Tast inn et tall mellom 1 og 3')
                 prioritet = None
     return Kategori(id, navn, prioritet)
-
