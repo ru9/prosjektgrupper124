@@ -5,7 +5,7 @@ Created on Fri Nov  4 21:09:42 2022
 @author: AOstebo
 """
 
-from klasse_sted import Sted
+from avtale import Sted
 
 def legg_til_sted(): 
     id = None
