@@ -1,5 +1,4 @@
-89,Sted 2,Gatenavn 3,8341,Postested 4
-94,Sted 3,Gatenavn 4,2275,Postested 5
-50,Sted 4,Gatenavn 5,7161,Postested 6
-60,Sted 5,Gatenavn 6,8306,Postested 7
-69,Sted 6,Gatenavn 7,6918,Postested 8
+1,Hjem,Geilen,4050,Sola
+2,kontoret,Eiganesveien,4008,Stavanger
+3,legekontor,Nytorget,4012,Stavanger
+4,barnehage,Risabergveien,4056,Tananger

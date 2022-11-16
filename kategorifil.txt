@@ -1,6 +1,4 @@
-70,Kategori familie,1
-17,Kategori jobb,1
-38,Kategori venner,1
-24,Kategori skole,1
-99,Kategori borettslag,1
-4,Kategori trening,1
+1,Familie,1
+2,jobb,1
+3,studier,1
+4,helse,1

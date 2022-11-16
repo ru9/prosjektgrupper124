@@ -92,9 +92,14 @@ def NyAvtale(stedliste):
         except ValueError:
             print("Må være et tall. Prøv igjen... ")
 
+
     return Avtale(name, place, start, duration)
 
+
+
+
 def ny_kategori():
+
     id = None
     navn = None
     prioritet = None
