@@ -1,3 +1,6 @@
+
 1,Familie,1
-2,Jobb,2
-3,Venner,1
+2,jobb,1
+3,studier,1
+4,helse,1
+

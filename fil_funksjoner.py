@@ -193,4 +193,50 @@ def AvtaleMedSokeOrd (avtaleliste):
         for avtale in avtaler_med_ord:
                print (f' {avtale} ')
     return avtaler_med_ord
-    
+
+
+#fyller ut en liste med n antall avtaler, for å slippe å lage en hel liste selv
+def fillAvtaler( n, steder, kategorier):
+    now = datetime.now()
+    avtaler  = []
+    print(len(steder))
+    print(len(kategorier))
+    for i in range (n):
+        #fyller ut avtaler med tilfeldig måned, dag, og tidspunkt
+        nyAvtale = Avtale((f'''Avtale {i + 1}'''),steder[randint(0, len(steder)-1)], 
+        datetime(now.year, randint(1, 12), randint(1, 28), randint(0, 23), randint(0, 59)), randint(0, 120) )
+        for j in range (randint(0, 4)):
+            nyAvtale.kategorier.append(kategorier[randint(0, len(kategorier)-1)])
+        avtaler.append(nyAvtale)
+    return avtaler
+
+        
+#fyller ut en liste med default kategorier
+def fillKategorier():
+    kategorier  = []
+    navneliste = ["familie", "jobb", "venner", "skole", "borettslag", "trening"]
+    for i in navneliste:
+        id = randint(1, 100)
+        NyKategori = Kategori((id), (f'''Kategori {i}'''))
+        kategorier.append(NyKategori)
+    return kategorier
+
+
+#fyller ut en liste med n antall steder, for å slippe å lage en hel liste selv
+def fillSteder( n = 5):
+    steder  = []
+    for i in range (n):
+        #fyller ut steder med tilfeldige verdiger
+        NySted = Sted((f'''{randint(1,100)}'''),(f'''Sted {i + 2}'''), (f'''Gatenavn {i + 3}'''), randint(1000,9999),
+        (f'''Postested {i + 4}''') )
+        steder.append(NySted)
+    return steder
+
+
+def finn_avtaler_paa_sted(id, avtaler):
+    matches = []
+    for avtale in avtaler:
+        if avtale.place.id == id:
+            matches.append(avtale)
+    return matches
+

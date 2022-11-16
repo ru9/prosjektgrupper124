@@ -36,6 +36,7 @@ class Avtale:
            At: {self.place}
            Start: {self.start}
            Duration: {self.duration} minutes.''')
+
    
     #funksjon som returnerer avtale variabler på et format som er enkelt å lese inn fra fil
     def formatData(self):

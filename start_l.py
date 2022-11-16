@@ -20,6 +20,7 @@ class Menu:
         self.avtaleliste=avtaleliste
         self.kategoriliste=kategoriliste
         self.stedliste=stedliste
+
    
 
     def run(self):
@@ -33,10 +34,12 @@ class Menu:
             print("6. Søk etter avtaler med søkeord i navnet")
             print("7. Tomt menyvalg")
             print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale")
-            print('9. Ledig')
-            print("10. Avslutte")
+            print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
+            print('10. Søk etter avtaler på sted')
+            print("11. Avslutte")
 
-            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 10: ")
+
+            kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 11: ")
 
             if kommando == "1":
                 ff.ReadFiler(self.avtaleliste, self.kategoriliste, self.stedliste)
@@ -136,10 +139,27 @@ class Menu:
                     break
 
 
-            #elif kommando == '9':
-            #ledig
+
+            elif kommando == '9':
+                self.avtaleliste = ff.fillAvtaler(int(input('Fyll med hvor mange avtaler? ')))
+                self.kategoriliste = ff.fillKategorier()
+                self.stedliste = ff.fillSteder(int(input('Fyll med hvor mange steder? ')))
+
+            elif kommando == '10':
+                ids = []
+                for sted in self.stedliste:
+                    print(f''' ({sted.id})   {sted.navn}''')
+                    ids.append(sted.id)
+                valg = input('Hvilket sted? Tast id: ')
+                if valg in ids:
+                    matches = ff.finn_avtaler_paa_sted(valg, self.avtaleliste)
+                    for avtale in matches:
+                        print(avtale)
+                else:
+                    print('Tast en gyldig id')
+
             
-            elif kommando == "10":
+            elif kommando == "11":
                 print ('Programmet avsluttet')  
                 break
             
