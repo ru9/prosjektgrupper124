@@ -37,7 +37,7 @@ class Menu:
             print("5. Søk etter avtaler for gitt dato") 
             print("6. Søk etter avtaler med søkeord i navnet")
             print("7. Legg til nytt sted i stedliste")
-            print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale")
+            print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale / Lag ny Kategori")
             print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
             print('10. Søk etter avtaler på sted')
             print("11. Avslutte")
@@ -104,7 +104,8 @@ class Menu:
                         print("""Velg mellom:
             1 - Slett en Avtale
             2 - Rediger en Avtale
-            3 - Legg Kategori til Avtale""")
+            3 - Legg Kategori til Avtale
+            4 - Lag ny Kategori""")
                         valg = int(input("Velg et nummer: "))
 
                         if valg == 1:
@@ -147,8 +148,11 @@ class Menu:
                                 except IndexError:
                                     print("Velg en gyldig indeks!")
                                 break
+                        elif valg == 4:
+                            ff.PrinteUtAlle(self.kategoriliste)
+                            self.kategoriliste.append(lna.ny_kategori())
                         else:
-                            print("Velg mellom 1 og 3")
+                            print("Velg mellom 1 og 4")
 
                     except ValueError:
                         print("Må være et tall. Prøv igjen... ")
