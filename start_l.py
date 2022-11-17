@@ -10,6 +10,8 @@ velger avslutt.print-setningene under kommandoene er bare for å teste om script
 virker før funksjonene ligger der."""
 import fil_funksjoner as ff
 import lage_ny_avtale as lna
+from avtale import Avtale
+
 
 
 class Menu:
@@ -127,7 +129,13 @@ class Menu:
                                     KatTilAvtale = int(input("Velg indeksen til Katagorien over du vil tilegne Avtalen: "))
                                     print(f"{self.avtaleliste[AvtaleTilKat - 1]}" + '\n' + f"{self.kategoriliste[KatTilAvtale - 1]}" + '\n')
                                     BekreftKat = str(input("Vil du knytte Avtalen og Kategorien over sammen? (ja/nei): "))
-                                    # Legger til funksjonen som slår sammen avatlen og kategorien her
+                                    # Legger til funksjonen som slår sammen avtalen og kategorien her
+                                    if BekreftKat == "ja":
+                                        KatTilAvtale.legg_til_kategori()
+                                    elif BekreftKat == "nei":
+                                        print("Velg på ny")
+                                    else:
+                                        print("Ja eller nei, begynn på ny")
                                 except IndexError:
                                     print("Velg en gyldig indeks!")
                                 break
