@@ -18,18 +18,47 @@ def NyAvtale(stedliste):
 
         
         if valg == 1:
-                PrinteUtAlle(stedliste)
-                indeks_valg = int(input("Bruk indeks og velg plassering: ")) - 1
-                sted_id = stedliste[indeks_valg].id
-                sted = stedliste[indeks_valg]
-                break
+            PrinteUtAlle(stedliste)
+
+            while True:
+                while True:
+                    try:
+                        indeks_valg = int(input("Bruk indeks og velg plassering: "))
+                        break
+                    except:
+                        print("Du må bruke et tall.")
+
+                if indeks_valg <= len(stedliste):
+                    break
+                else:
+                    print("Du må velge gyldig indeks.")
+
+            sted_id = stedliste[indeks_valg - 1].id
+            sted = stedliste[indeks_valg - 1]
+            break
                 
         elif valg == 2:
-                ny_id = input("Id: ")
-                nytt_sted = input("Navn på nytt sted: ")
-                sted = Sted(ny_id, nytt_sted)
-                stedliste.append(sted)
-                break
+            ider = []
+            for line in stedliste:
+                ider.append(line.id)
+
+            while True:
+                while True:
+                    try:    
+                        ny_id = int(input("Id: "))
+                        break
+                    except:
+                        print("Du må bruke et tall.")
+
+                if str(ny_id) not in ider:
+                    break
+                else:
+                    print("Id'en er allerede i bruk. Velg en ny.")
+
+            nytt_sted = input("Navn på nytt sted: ")
+            sted = Sted(ny_id, nytt_sted)
+            stedliste.append(sted)
+            break
     
     while True:
         try:
