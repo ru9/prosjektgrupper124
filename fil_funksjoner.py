@@ -63,11 +63,9 @@ def ReadFiler(avtaleliste, kategoriliste, stedliste):
                   avtale = Avtale(*row)
                   if len(row)==6:
                       sted_id = row[5]
-                      #Sted=None
                       for steder in stedliste:
                           if sted_id == steder.id:
                               avtale.legg_til_sted(steder)
-                              break
                       string = row[4]
                       from ast import literal_eval
                       kat_id=literal_eval(string)
@@ -78,7 +76,7 @@ def ReadFiler(avtaleliste, kategoriliste, stedliste):
                               Avtale_kategori = kategori
                               avtale.legg_til_kategori(Avtale_kategori)
                       avtaleliste.append(avtale) 
-                  elif len(row)==5:
+                  elif len(row)==5 and row[4]==list:
                       string = row[4]
                       from ast import literal_eval
                       kat_id=literal_eval(string)
@@ -88,6 +86,12 @@ def ReadFiler(avtaleliste, kategoriliste, stedliste):
                              if iD == int(kategori.id):
                                 Avtale_kategori = kategori
                                 avtale.legg_til_kategori(Avtale_kategori)
+                      avtaleliste.append(avtale) 
+                  elif len(row)==5:
+                      sted_id = row[4]
+                      for steder in stedliste:
+                          if sted_id == steder.id:
+                              avtale.legg_til_sted(steder)
                       avtaleliste.append(avtale) 
                   else:
                       avtaleliste.append(avtale)      
@@ -234,7 +238,6 @@ def fillSteder( n = 5):
 def finn_avtaler_paa_sted(id, avtaler):
     matches = []
     for avtale in avtaler:
-        if avtale.place.id == id:
+        if avtale.sted.id == id:
             matches.append(avtale)
     return matches
-
