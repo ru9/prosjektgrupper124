@@ -11,6 +11,7 @@ virker før funksjonene ligger der."""
 import fil_funksjoner as ff
 import lage_ny_avtale as lna
 from avtale import Avtale
+from funksjon_lag_sted import *
 
 
 
@@ -35,7 +36,7 @@ class Menu:
             print("4. Skrive ut alle avtalene/kategoriene/steder") 
             print("5. Søk etter avtaler for gitt dato") 
             print("6. Søk etter avtaler med søkeord i navnet")
-            print("7. Tomt menyvalg")
+            print("7. Legg til nytt sted i stedliste")
             print("8. Slett en Avtale / Rediger en avtale / Legg til Kategori til Avtale")
             print('9. Lag liste med avtaler, liste med kategorier, og liste med steder')
             print('10. Søk etter avtaler på sted')
@@ -92,8 +93,9 @@ class Menu:
                 ff.AvtaleMedSokeOrd(self.avtaleliste)
 
             elif kommando == "7":
-                # Slett er flyttet til 8, åpen for bruk
-                print("Menyvalg åpen for bruk")
+                nyttsted = legg_til_sted()
+                self.stedliste.append(nyttsted)
+                
 
             elif kommando == "8":
                 #Slett, Rediger avtale eller legg Kategori til Avtale
