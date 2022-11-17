@@ -115,7 +115,7 @@ class Menu:
                                     ff.PrinteUtAlle(self.avtaleliste)
                                     rediger = int(input("Velg indeksen til avtalen du vil redigere: "))
                                     print(f"{self.avtaleliste[rediger - 1]}")
-                                    self.avtaleliste[rediger - 1] = lna.NyAvtale()
+                                    self.avtaleliste[rediger - 1] = lna.NyAvtale(self.stedliste)
                                     break
                                 except IndexError:
                                     print("Velg en gyldig indeks!")
@@ -125,13 +125,14 @@ class Menu:
                                 try:
                                     ff.PrinteUtAlle(self.avtaleliste)
                                     AvtaleTilKat = int(input("Velg indeksen til avtalen du vil legge til Kategori: "))
+                                    avt=self.avtaleliste[AvtaleTilKat-1]
                                     ff.PrinteUtAlle(self.kategoriliste)
                                     KatTilAvtale = int(input("Velg indeksen til Katagorien over du vil tilegne Avtalen: "))
-                                    print(f"{self.avtaleliste[AvtaleTilKat - 1]}" + '\n' + f"{self.kategoriliste[KatTilAvtale - 1]}" + '\n')
+                                    kat=self.kategoriliste[KatTilAvtale-1]
                                     BekreftKat = str(input("Vil du knytte Avtalen og Kategorien over sammen? (ja/nei): "))
                                     # Legger til funksjonen som slår sammen avtalen og kategorien her
                                     if BekreftKat == "ja":
-                                        KatTilAvtale.legg_til_kategori()
+                                        avt.legg_til_kategori(kat)
                                     elif BekreftKat == "nei":
                                         print("Velg på ny")
                                     else:
