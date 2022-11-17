@@ -26,6 +26,7 @@ class Menu:
    
 
     def run(self):
+        filerlest=False
         while True:   
             print("Du har følgende valg:")
             print("1. Lese inn data fra filer")
@@ -44,7 +45,11 @@ class Menu:
             kommando = input("Hva ønsker du å gjøre? Velg med tall 1 til 11: ")
 
             if kommando == "1":
-                ff.ReadFiler(self.avtaleliste, self.kategoriliste, self.stedliste)
+                if filerlest==False:
+                    ff.ReadFiler(self.avtaleliste, self.kategoriliste, self.stedliste)
+                    filerlest=True
+                else:
+                    print ('Filer er allerede lest til programmet'+'\n')
                
                             
             elif kommando == "2":
