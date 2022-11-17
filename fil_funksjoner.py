@@ -72,7 +72,7 @@ def ReadFiler(avtaleliste, kategoriliste, stedliste):
                       Avtale_kategori=None
                       for iD in kat_id:
                         for kategori in kategoriliste:
-                            if iD == int(kategori.id):
+                            if int(iD) == int(kategori.id):
                               Avtale_kategori = kategori
                               avtale.legg_til_kategori(Avtale_kategori)
                       avtaleliste.append(avtale) 
