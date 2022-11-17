@@ -66,7 +66,6 @@ def ReadFiler(avtaleliste, kategoriliste, stedliste):
                       for steder in stedliste:
                           if sted_id == steder.id:
                               avtale.legg_til_sted(steder)
-                              break
                       string = row[4]
                       from ast import literal_eval
                       kat_id=literal_eval(string)
@@ -92,9 +91,8 @@ def ReadFiler(avtaleliste, kategoriliste, stedliste):
                       sted_id = row[4]
                       for steder in stedliste:
                           if sted_id == steder.id:
-                              
                               avtale.legg_til_sted(steder)
-                              break
+                      avtaleliste.append(avtale) 
                   else:
                       avtaleliste.append(avtale)      
         print ('Avtaleliste er lest fra fil' + '\n')
@@ -243,4 +241,3 @@ def finn_avtaler_paa_sted(id, avtaler):
         if avtale.sted.id == id:
             matches.append(avtale)
     return matches
-
